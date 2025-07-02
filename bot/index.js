@@ -14,7 +14,15 @@ if (!token) {
 const webAppUrl = process.env.WEBAPP_URL || 'https://example.com';
 
 // Создание экземпляра бота
-const bot = new TelegramBot(token, { polling: true });
+const bot = new TelegramBot(token, {
+  polling: {
+    params: {
+      timeout: 60,      // ждать до 60 сек
+      limit: 100        // макс. апдейтов за запрос
+    },
+    retryTimeout: 5000  // пытаться снова через 5 сек после ошибки
+  }
+});
 
 // Хранилище новостей (в реальном приложении использовалась бы база данных)
 let latestNews = {
@@ -243,4 +251,10 @@ process.on('SIGINT', () => {
   console.log('Бот остановлен');
   server.close();
   process.exit(0);
+});
+
+// Обработка ошибок polling и автоперезапуск
+bot.on('polling_error', (err) => {
+  console.error('Polling error:', err);
+  setTimeout(() => bot.startPolling(), 5000);
 }); 
