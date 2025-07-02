@@ -21,7 +21,6 @@
     font-weight: 600;
     margin-bottom: v.$spacing-sm;
     color: v.$color-text-primary;
-    @include m.text-ellipsis;
   }
   
   &__text {

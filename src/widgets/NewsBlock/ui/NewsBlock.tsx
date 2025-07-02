@@ -35,8 +35,8 @@ export const NewsBlock: React.FC<NewsBlockProps> = ({ className = '' }) => {
       setNews(newsData);
     });
 
-    // Добавляем интервал для автоматического обновления новостей каждые 10 секунд
-    const intervalId = setInterval(fetchNews, 10000);
+    // Добавляем интервал для автоматического обновления новостей каждые 30 секунд
+    const intervalId = setInterval(fetchNews, 30000);
 
     return () => {
       unsubscribe();
