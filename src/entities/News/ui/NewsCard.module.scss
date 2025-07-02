@@ -27,13 +27,46 @@
   &__text {
     font-size: v.$font-size-md;
     color: v.$color-text-secondary;
+    margin-bottom: v.$spacing-sm;
+    
     @include m.multi-line-ellipsis(3);
-    margin-bottom: v.$spacing-md;
+    
+    &--expanded {
+      display: block;
+      overflow: visible;
+      text-overflow: initial;
+      white-space: normal;
+      -webkit-line-clamp: unset;
+      max-height: none;
+    }
+  }
+  
+  &__expand-button {
+    background: none;
+    border: none;
+    color: v.$color-primary;
+    font-size: v.$font-size-sm;
+    font-weight: 500;
+    padding: v.$spacing-xs 0;
+    margin-bottom: v.$spacing-sm;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+    
+    &:hover {
+      color: darken(v.$color-primary, 10%);
+    }
+    
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(v.$color-primary, 0.3);
+    }
   }
   
   &__date {
     font-size: v.$font-size-xs;
     color: v.$color-text-secondary;
+    margin-top: v.$spacing-xs;
   }
   
   &--loading {

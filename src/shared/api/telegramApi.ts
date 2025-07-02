@@ -9,6 +9,7 @@ interface TelegramEventData {
 class TelegramApi {
   private static instance: TelegramApi;
   private eventListeners: Map<string, Function[]> = new Map();
+  private apiUrl: string = 'https://a7f2-212-73-67-186.ngrok-free.app'; // <-- публичный адрес ngrok
 
   private constructor() {
     // Инициализация WebApp
@@ -64,15 +65,28 @@ class TelegramApi {
 
   // Получение последней новости
   public async getLatestNews(): Promise<News> {
-    // В реальном приложении здесь был бы запрос к серверу
-    // Для демонстрации используем заглушку
-    return {
-      id: '1',
-      title: 'Последние новости',
-      text: 'Это демонстрационная новость для Telegram WebApp. В реальном приложении здесь будет отображаться контент, полученный от бота.',
-      imageUrl: 'https://placehold.co/600x400?text=Telegram+WebApp+News',
-      createdAt: new Date().toISOString(),
-    };
+    try {
+      // Получаем данные от нашего API
+      const response = await fetch(`${this.apiUrl}/api/news/latest`);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      
+      const news: News = await response.json();
+      return news;
+    } catch (error) {
+      console.error('Error fetching latest news:', error);
+      
+      // В случае ошибки возвращаем заглушку
+      return {
+        id: '1',
+        title: 'Ошибка загрузки',
+        text: 'Не удалось загрузить последнюю новость. Пожалуйста, попробуйте позже.',
+        imageUrl: 'https://placehold.co/600x400?text=Error',
+        createdAt: new Date().toISOString(),
+      };
+    }
   }
 
   // Отправка данных в Telegram
