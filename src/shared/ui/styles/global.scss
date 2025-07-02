@@ -1,0 +1,90 @@
+@use 'sass:color';
+@use 'variables' as v;
+@use 'mixins' as m;
+@forward 'reset';
+
+/* Глобальные стили */
+body {
+  font-family: v.$font-family-base;
+  font-size: v.$font-size-md;
+  color: v.$color-text-primary;
+  background-color: v.$color-background-secondary;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: v.$spacing-md;
+}
+
+h1 {
+  font-size: v.$font-size-xl;
+}
+
+h2 {
+  font-size: calc(v.$font-size-xl - 4px);
+}
+
+h3 {
+  font-size: v.$font-size-lg;
+}
+
+p {
+  margin-bottom: v.$spacing-md;
+}
+
+a {
+  color: v.$color-primary;
+  transition: color v.$transition-fast;
+  
+  &:hover {
+    color: color.adjust(v.$color-primary, $lightness: -10%);
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 v.$spacing-md;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+/* Утилиты для отступов */
+.mt-xs { margin-top: v.$spacing-xs; }
+.mt-sm { margin-top: v.$spacing-sm; }
+.mt-md { margin-top: v.$spacing-md; }
+.mt-lg { margin-top: v.$spacing-lg; }
+.mt-xl { margin-top: v.$spacing-xl; }
+
+.mb-xs { margin-bottom: v.$spacing-xs; }
+.mb-sm { margin-bottom: v.$spacing-sm; }
+.mb-md { margin-bottom: v.$spacing-md; }
+.mb-lg { margin-bottom: v.$spacing-lg; }
+.mb-xl { margin-bottom: v.$spacing-xl; }
+
+/* Утилиты для текста */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.text-primary { color: v.$color-primary; }
+.text-secondary { color: v.$color-secondary; }
+.text-info { color: v.$color-info; } 

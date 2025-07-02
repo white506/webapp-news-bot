@@ -1,0 +1,40 @@
+@use '@shared/ui/styles/variables' as v;
+@use '@shared/ui/styles/mixins' as m;
+
+.news-block {
+  margin-bottom: v.$spacing-lg;
+  
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: v.$spacing-md;
+  }
+  
+  &__title {
+    font-size: v.$font-size-xl;
+    font-weight: 600;
+    color: v.$color-text-primary;
+  }
+  
+  &__refresh {
+    display: flex;
+    align-items: center;
+    font-size: v.$font-size-sm;
+    color: v.$color-primary;
+    cursor: pointer;
+    
+    &-icon {
+      margin-right: v.$spacing-xs;
+    }
+  }
+  
+  &__error {
+    padding: v.$spacing-md;
+    background-color: rgba(red, 0.1);
+    border-radius: v.$border-radius-md;
+    color: red;
+    font-size: v.$font-size-sm;
+    margin-bottom: v.$spacing-md;
+  }
+} 

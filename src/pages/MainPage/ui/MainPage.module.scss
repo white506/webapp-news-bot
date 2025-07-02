@@ -1,0 +1,18 @@
+@use '@shared/ui/styles/variables' as v;
+@use '@shared/ui/styles/mixins' as m;
+
+.main-page {
+  padding: v.$spacing-md;
+  
+  &__title {
+    font-size: v.$font-size-xl;
+    font-weight: 600;
+    margin-bottom: v.$spacing-lg;
+    text-align: center;
+    color: v.$color-text-primary;
+  }
+  
+  &__section {
+    margin-bottom: v.$spacing-lg;
+  }
+} 

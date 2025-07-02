@@ -1,0 +1,90 @@
+@use 'variables' as v;
+
+// Флексбокс миксины
+@mixin flex($direction: row, $justify: flex-start, $align: stretch, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Типографика
+@mixin text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin multi-line-ellipsis($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Медиа-запросы
+@mixin media-sm {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin media-md {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin media-lg {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
+
+@mixin media-xl {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+// Кнопки
+@mixin button-base {
+  @include flex(row, center, center);
+  padding: v.$spacing-sm v.$spacing-md;
+  border: none;
+  border-radius: v.$border-radius-md;
+  font-family: v.$font-family-base;
+  font-size: v.$font-size-md;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all v.$transition-normal;
+  text-decoration: none;
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+// Карточки
+@mixin card {
+  background-color: v.$color-background;
+  border-radius: v.$border-radius-md;
+  box-shadow: v.$box-shadow-sm;
+  overflow: hidden;
+}
+
+// Сброс списка
+@mixin reset-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+} 

@@ -1,0 +1,91 @@
+@use 'sass:color';
+@use '@shared/ui/styles/variables' as v;
+@use '@shared/ui/styles/mixins' as m;
+
+.button {
+  @include m.button-base;
+  
+  &--primary {
+    background-color: v.$color-primary;
+    color: white;
+    
+    &:hover {
+      background-color: color.adjust(v.$color-primary, $lightness: -5%);
+    }
+    
+    &:active {
+      background-color: color.adjust(v.$color-primary, $lightness: -10%);
+    }
+  }
+  
+  &--secondary {
+    background-color: v.$color-secondary;
+    color: white;
+    
+    &:hover {
+      background-color: color.adjust(v.$color-secondary, $lightness: -5%);
+    }
+    
+    &:active {
+      background-color: color.adjust(v.$color-secondary, $lightness: -10%);
+    }
+  }
+  
+  &--outline {
+    background-color: transparent;
+    border: 1px solid v.$color-primary;
+    color: v.$color-primary;
+    
+    &:hover {
+      background-color: rgba(v.$color-primary, 0.05);
+    }
+    
+    &:active {
+      background-color: rgba(v.$color-primary, 0.1);
+    }
+  }
+  
+  &--text {
+    background-color: transparent;
+    color: v.$color-primary;
+    padding: v.$spacing-xs v.$spacing-sm;
+    
+    &:hover {
+      background-color: rgba(v.$color-primary, 0.05);
+    }
+    
+    &:active {
+      background-color: rgba(v.$color-primary, 0.1);
+    }
+  }
+  
+  &--block {
+    width: 100%;
+    display: flex;
+  }
+  
+  &--sm {
+    padding: v.$spacing-xs v.$spacing-sm;
+    font-size: v.$font-size-sm;
+  }
+  
+  &--lg {
+    padding: v.$spacing-md v.$spacing-lg;
+    font-size: v.$font-size-lg;
+  }
+  
+  &--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  
+  &__icon {
+    margin-right: v.$spacing-xs;
+    
+    &--right {
+      margin-right: 0;
+      margin-left: v.$spacing-xs;
+    }
+  }
+} 

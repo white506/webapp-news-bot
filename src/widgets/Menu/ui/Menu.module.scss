@@ -1,0 +1,43 @@
+@use '@shared/ui/styles/variables' as v;
+@use '@shared/ui/styles/mixins' as m;
+
+.menu {
+  margin-bottom: v.$spacing-lg;
+  
+  &__list {
+    @include m.flex(row, space-between, center, wrap);
+    gap: v.$spacing-md;
+  }
+  
+  &__item {
+    flex: 1;
+    min-width: 100px;
+  }
+  
+  &__button {
+    @include m.flex(column, center, center);
+    width: 100%;
+    padding: v.$spacing-md;
+    background-color: v.$color-background;
+    border-radius: v.$border-radius-md;
+    box-shadow: v.$box-shadow-sm;
+    transition: all v.$transition-normal;
+    cursor: default;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: v.$box-shadow-md;
+    }
+  }
+  
+  &__icon {
+    font-size: 24px;
+    margin-bottom: v.$spacing-xs;
+  }
+  
+  &__label {
+    font-size: v.$font-size-sm;
+    color: v.$color-text-secondary;
+    text-align: center;
+  }
+} 
